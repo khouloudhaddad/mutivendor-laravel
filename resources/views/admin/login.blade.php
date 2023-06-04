@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Skydash Admin</title>
+  <title>Multivendor Ecommerce | Login</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ url('admin/vendors/feather/feather.css') }}">
   <link rel="stylesheet" href="{{ url('admin/vendors/ti-icons/css/themify-icons.css') }}">
@@ -33,10 +33,26 @@
               <h6 class="font-weight-light">Sign in to continue.</h6>
 
               @if(Session::has('error_message'))
-              <div class="mt-3 alert alert-warning" role="alert">
+              <div class="mt-3 alert alert-warning alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Error!</h4>
                 <p>{{ Session::get('error_message') }}</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+              @endif
+
+              @if ($errors->any())
+                    <div class="mt-3 alert alert-danger alert-dismissible fade show" role="alert">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
               @endif
 
               <form class="pt-3" action="{{ url('admin/login') }}" method="POST">
