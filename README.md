@@ -79,6 +79,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - Encrypt password for Seeder: [Bcrypt-generator](https://bcrypt-generator.com/)
 - Fill in the seeder and run `php artisan db:seed`
 
-- There 2 types of validation to implement: 
+- There are 2 types of validation to implement: 
     - Server side validation
     - Client side validation
