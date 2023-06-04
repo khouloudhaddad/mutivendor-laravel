@@ -68,4 +68,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - `php artisan breeze:install`
 - `npm install && npm run dev`
 - Download template from [this link](https://github.com/BootstrapDash/skydash-free-bootstrap-admin-template)
+- `php artisan make:migration create_vendors_table` and create table structure
+- `php artisan make:model Vendor`
+- `php artisan make:migration create_admins_table` and create table structure
+- `php artisan make:model Admin`
 
