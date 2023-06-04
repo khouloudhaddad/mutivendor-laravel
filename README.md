@@ -72,4 +72,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - `php artisan make:model Vendor`
 - `php artisan make:migration create_admins_table` and create table structure
 - `php artisan make:model Admin`
+- Admin/Vendors we use Guards
+- Users we use default Auth 
+- `php artisan make:middleware Admin`
 
