@@ -67,4 +67,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - `composer require laravel/breeze --dev`
 - `php artisan breeze:install`
 - `npm install && npm run dev`
+- Download template from [this link](https://github.com/BootstrapDash/skydash-free-bootstrap-admin-template)
 
