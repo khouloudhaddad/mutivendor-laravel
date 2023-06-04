@@ -75,4 +75,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - Admin/Vendors we use Guards
 - Users we use default Auth 
 - `php artisan make:middleware Admin`
+- `php artisan make:seeder AdminTableSeeder`
+- Encrypt password for Seeder: [Bcrypt-generator](https://bcrypt-generator.com/)
+- Fill in the seeder and run `php artisan db:seed`
 
