@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Auth;
 use Hash;
+use Illuminate\Contracts\View\View;
 
 class AdminController extends Controller
 {
@@ -70,6 +72,35 @@ class AdminController extends Controller
         }
         $admin = Admin::where('email', Auth::guard('admin')->user()->email)->first();
         return view('admin.settings.update_admin_password', compact('admin'));
+    }
+
+    public function updateAdminDetails(Request $request) {
+        if($request->isMethod('post')){
+            $data = $request->all();
+
+            $rules = [
+                'admin_name' => 'required|regex:/^[\pL\s\-]+$/u',
+                'admin_mobile' => 'required|numeric',
+            ];
+
+            $customMessages = [
+                'admin_name.required' => 'Name is required',
+                'admin_name.regex' => 'Name should contain white spaces',
+                'admin_mobile.required' => 'Mobile Number is required',
+                'admin_mobile.numeric' => 'Valid Mobile Number is required'
+            ];
+
+            $this->validate($request, $rules, $customMessages);
+
+            Admin::where('id', Auth::guard('admin')->user()->id)->update([
+                'name' =>$data['admin_name'],
+                'mobile' => $data['admin_mobile']
+            ]);
+
+            return redirect()->back()->with('success_message', 'Admin details updated successfully');
+        }
+        //$admin = Admin::where('email', Auth::guard('admin')->user()->email)->first();
+        return view('admin.settings.update_admin_details');
     }
 
     public function checkCurrentPassword(Request $request){
