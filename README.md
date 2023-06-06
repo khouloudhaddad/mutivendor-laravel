@@ -82,3 +82,20 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - There are 2 types of validation to implement: 
     - Server side validation
     - Client side validation
+## Upload Images with resize
+- `composer require intervention/image` package for image management
+<h6>Intégrer Intervention Image</h6>
+<p>Pour intégrer intervention/image dans l'application après l'avoir téléchargé, ouvrons le fichier de configuration config/app.php, ajoutons le service provider ImageServiceProvider::class au tableau $providers :</p>
+
+<pre>
+Intervention\Image\ImageServiceProvider::class
+</pre>
+
+<p>Puis la façade « Image » au tableau $aliases :</p>
+
+<pre>'Image' => Intervention\Image\Facades\Image::class</pre>
+
+<h6>Configurer Intervention Image</h6>
+<p>Pour modifier la configuration par défaut d'Intervention Image, nous pouvons publier le fichier de configuration en exécutant la commande artisan suivante : `php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravelRecent"`</p>
+
+ 

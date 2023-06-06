@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Auth;
+use Exception;
 use Hash;
-use Illuminate\Contracts\View\View;
+use Image;
 
 class AdminController extends Controller
 {
@@ -92,9 +92,37 @@ class AdminController extends Controller
 
             $this->validate($request, $rules, $customMessages);
 
+            //Upload Image Photo
+            if($request->hasFile('admin_image')){
+                $image_temp = $request->file('admin_image');
+
+                if($image_temp->isValid()){
+                    //Get Image extension
+                    $extension = $image_temp->getClientOriginalExtension();
+                    //Generate New Image Name
+                    $imageName = rand(111, 99999) . '.' . $extension;
+                    $imagePath = 'admin/images/admin_photos/' . $imageName;
+
+                    try{
+                        Image::make($image_temp)->save($imagePath);
+                    }
+                    catch(Exception $exception){
+                        return redirect()->back()->with('error_message', $exception->getMessage());
+                    }
+
+                }else{
+                    return redirect()->back()->with('error_message', 'Invalid Image!');
+                }
+            }else if(!empty($data['current_admin_image'])){
+                $imageName = $data['current_admin_image'];
+            }else{
+                $imageName = "";
+            }
+
             Admin::where('id', Auth::guard('admin')->user()->id)->update([
                 'name' =>$data['admin_name'],
-                'mobile' => $data['admin_mobile']
+                'mobile' => $data['admin_mobile'],
+                'image' => $imageName
             ]);
 
             return redirect()->back()->with('success_message', 'Admin details updated successfully');

@@ -47,6 +47,7 @@
                   method="POST"
                   name="updateAdminDetailsForm"
                   id="updateAdminDetailsForm"
+                  enctype="multipart/form-data"
                   >
                   @csrf
                     <div class="form-group">
@@ -59,12 +60,32 @@
                     </div>
                     <div class="form-group">
                       <label for="admin_name">Name</label>
-                      <input type="text" class="form-control" value="{{ Auth::guard('admin')->user()->name }}" id="admin_name" name="admin_name" placeholder="Enter Name" required>
+                      <input type="text" class="form-control" value="{{ Auth::guard('admin')->user()->name }}"
+                      id="admin_name" name="admin_name" placeholder="Enter Name" required>
                     </div>
                     <div class="form-group">
                       <label for="admin_mobile">Mobile</label>
                       <input type="number" class="form-control" value="{{ Auth::guard('admin')->user()->mobile }}"
-                      id="admin_mobile" name="admin_mobile" placeholder="New Password">
+                      id="admin_mobile" name="admin_mobile" placeholder="Enter mobile Number"
+                      required
+                      minlength="10"
+                      maxlength="10"
+                      >
+                    </div>
+                    <!--Image -->
+                    <div class="form-group position-relative mt-2">
+                      <label class="custom-file-label" for="admin_image">Upload Admin Image</label>
+                      <input type="file" class="form-control custom-file-input mb-2"
+                      value="{{ Auth::guard('admin')->user()->image }}"
+                      id="admin_image"
+                      name="admin_image"
+                      required>
+
+                      @if(!empty(Auth::guard('admin')->user()->image))
+                        <a href="{{ asset('admin/images/admin_photos/'.Auth::guard('admin')->user()->image) }}">View Image</a>
+                        <input type="hidden" value="{{ Auth::guard('admin')->user()->image }}"
+                        name="current_admin_image" />
+                      @endif
                     </div>
 
                     <button type="submit" class="btn btn-primary me-2">Submit</button>

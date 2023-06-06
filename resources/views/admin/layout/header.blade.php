@@ -71,7 +71,11 @@
 
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{ asset('admin/images/faces/face5.jpg') }}" alt="profile"/>
+                @if(!empty(Auth::guard('admin')->user()->image))
+                 <img src="{{ asset('admin/images/admin_photos/'.Auth::guard('admin')->user()->image) }}" />
+                @else
+                 <img src="{{ asset('admin/images/faces/face5.jpg') }}" alt="profile"/>
+                @endif
               <span class="nav-profile-name">{{ Auth::user()->name }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
