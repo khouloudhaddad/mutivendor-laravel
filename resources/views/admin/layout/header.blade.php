@@ -76,7 +76,7 @@
                 @else
                  <img src="{{ asset('admin/images/faces/face5.jpg') }}" alt="profile"/>
                 @endif
-              <span class="nav-profile-name">{{ Auth::user()->name }}</span>
+              <span class="nav-profile-name">{{Auth::guard('admin')->user()->name}}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
