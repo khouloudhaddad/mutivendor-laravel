@@ -19,16 +19,16 @@ class AdminTableSeeder extends Seeder
 
         $adminRecords = [
             [
-                'id' => 1,
-                'name' => 'Super Admin',
-                'type' => 'superadmin',
-                'vendor_id' => 0,
-                'mobile' => '99000000',
-                'email' => 'admin@admin.com',
-                'password' => Hash::make('password') , //'$2a$12$KIPtjP5.8qC9hfceKmjusuUG9gvjeFmZxqd3YZBv3bNfOpYC4NMKO',
+                'id' => 2,
+                'name' => 'John',
+                'type' => 'vendor',
+                'vendor_id' => 1,
+                'mobile' => '98000000',
+                'email' => 'john@admin.com',
+                'password' => Hash::make('123456') , //'$2a$12$KIPtjP5.8qC9hfceKmjusuUG9gvjeFmZxqd3YZBv3bNfOpYC4NMKO',
                 'image' => '',
                 'status' => 1
-            ],
+            ]
         ];
 
         Admin::insert($adminRecords);

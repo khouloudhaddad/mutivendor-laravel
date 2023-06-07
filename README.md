@@ -98,4 +98,12 @@ Intervention\Image\ImageServiceProvider::class
 <h6>Configurer Intervention Image</h6>
 <p>Pour modifier la configuration par défaut d'Intervention Image, nous pouvons publier le fichier de configuration en exécutant la commande artisan suivante : `php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravelRecent"`</p>
 
+- `php artisan make:migration create_vendors_business_details_table`
+- `php artisan make:migration create_vendors_bank_details`
+- `php artisan make:seeder VendorsTableSeeder`
+- `php artisan make:model VendorsBusinessDetail`
+- `php artisan make:model VendorsBankDetail` 
+- `php artisan make:seeder VendorsBusinessDetailsTableSeeder`
+- `php artisan make:seeder VendorsBankDetailsTableSeeder`
+
  

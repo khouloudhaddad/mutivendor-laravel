@@ -33,9 +33,8 @@
               <h6 class="font-weight-light">Sign in to continue.</h6>
 
               @if(Session::has('error_message'))
-              <div class="mt-3 alert alert-warning alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">Error!</h4>
-                <p>{{ Session::get('error_message') }}</p>
+              <div class="mt-3 alert alert-danger alert-dismissible fade show" role="alert">
+                <p class="mb-0"><strong class="alert-heading">Error!</strong> {{ Session::get('error_message') }}</p>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
