@@ -105,5 +105,3 @@ Intervention\Image\ImageServiceProvider::class
 - `php artisan make:model VendorsBankDetail` 
 - `php artisan make:seeder VendorsBusinessDetailsTableSeeder`
 - `php artisan make:seeder VendorsBankDetailsTableSeeder`
-
- 
